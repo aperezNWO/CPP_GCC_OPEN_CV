@@ -1,0 +1,5 @@
+mingwin/include/
+mingwin/x64/mingw/lib/
+vc16/include/
+vc16/x64/vc16/bin/
+vc16/x64/vc16/lib/

@@ -1,0 +1,24 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "(1) Build OpenCV Example",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-o",
+                "${workspaceFolder}\\OpenCVApp.exe",
+                "${workspaceFolder}\\OpenCvApp.cpp",
+                "-I${workspaceFolder}\\include",
+                "-L${workspaceFolder}\\x64\\vc16\\lib",
+                "-lopencv_world4110", // Link against the single world library
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$gcc"],
+            "detail": "Compile OpenCV Example with g++"
+        }
+    ]
+}

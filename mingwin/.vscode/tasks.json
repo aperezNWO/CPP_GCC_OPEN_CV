@@ -1,0 +1,27 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "(1) Build OpenCV Example",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-o",
+                "${workspaceFolder}\\OpenCVApp.exe",
+                "${workspaceFolder}\\OpenCvApp.cpp",
+                "-I${workspaceFolder}\\include",
+                "-L${workspaceFolder}\\x64\\mingw\\lib",
+                "-lopencv_core455", // Link against the single world library
+                "-lopencv_imgproc455", // Link against the single world library
+                "-lopencv_imgcodecs455",
+                "-lopencv_highgui455",
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$gcc"],
+            "detail": "Compile OpenCV Example with g++"
+        }
+    ]
+}
