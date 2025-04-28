@@ -1,0 +1,50 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "cppbuild",
+			"label": "(2) Build OpenCv DLL test",
+			"command": "g++", // Path to g++ (ensure it's in your PATH or specify the full path)
+			"args": [
+                "-o",
+                "${workspaceFolder}\\mingwin\\OpenCVTest.exe",
+                "${workspaceFolder}\\mingwin\\OpenCvTest.cpp",
+			],
+			"options": {
+				"cwd": "${workspaceFolder}" // Current working directory
+			},
+			"problemMatcher": ["$gcc"], // Match GCC-style error messages
+			"group": {
+				"kind": "build", // Mark as a build task
+				"isDefault": true // Set as the default build task
+			},
+			"detail": "Generated task for building Tesseract DLL"
+        },
+        {
+            "label": "(3) Build OpenCV DLL",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-shared", // Create a shared library (DLL)
+				//"-static", // Statically link libraries
+				"-static-libgcc", // Statically link GCC runtime
+				"-static-libstdc++", // Statically link C++ standard library
+    			"-o",
+				"${workspaceFolder}\\mingwin\\OpenCvDll.dll",
+                "${workspaceFolder}\\mingwin\\OpenCvDll.cpp",
+                "-I${workspaceFolder}\\mingwin\\include",
+                "-L${workspaceFolder}\\mingwin\\x64\\mingw\\lib\\",
+                "-lopencv_core455", // Link against the single world library
+                "-lopencv_imgproc455", // Link against the single world library
+                "-lopencv_imgcodecs455",
+                "-lopencv_highgui455",
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$gcc"],
+            "detail": "Compile OpenCV Example with g++"
+        }
+    ]
+}

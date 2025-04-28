@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "opencvapp": "cpp",
+        "iostream": "cpp",
+        "deque": "cpp"
+    },
+    "C_Cpp.errorSquiggles": "disabled"
+}

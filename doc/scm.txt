@@ -1,4 +1,4 @@
-echo "# CPP_GCC_OPEN_CV" >> README.md && git init && git add * && git commit  -m "first commit" && git branch -M main && git remote add origin https://github.com/aperezNWO/CPP_GCC_OPEN_CV.git && git push -u origin main && git pull
+echo "# CPP_GCC_OPEN_CV" >> README.md && git init && git add * && git commit  -m "first commit" && git branch -M main && git remote add origin https://github.com/aperezNWO/CPP_GCC_OPEN_CV.git && git push -u origin main && git pull && git push 
 
 
 
