@@ -72,6 +72,16 @@ toochain -> mingwx64 (no msys)
 
 how can I install opencv c++ static libraries compatible with mingw64 using vcpkg
 
+1) vcpkg_mingw64
+
+    a) clone vcpkg (different from existeng vcpkg compiled for uctr64)
+
+2) vcpkg install opencv4:x64-mingw-static
+
+    a) look for *.a files
+
+    b) install missing vcpkg packages by demand.
+
 */
 
 /////////////////////////////////////////////////////////
