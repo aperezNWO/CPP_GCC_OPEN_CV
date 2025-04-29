@@ -4,14 +4,73 @@
 
 /*
 
+git clone https://github.com/opencv/opencv.git
+git clone https://github.com/opencv/opencv_contrib.git
 
-0) stable dist files with no qt
+md build
+cd build
 
-    https://github.com/thommyho/Cpp-OpenCV-Windows-PreBuilts
+// worked!!!!
 
-1) exe with no qt files works only on mingwin/x64/mingin/bin directory
-2) exe with qt works only on qt\bin dir.
-3) Generate and test static dll on "test folder" with no dependencies
+set CC=C:/MinGW/mingw64/bin/gcc.exe
+set CXX=C:/MinGW/mingw64/bin/g++.exe
+
+cmake .. -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX=install -DOPENCV_ENABLE_NONFREE=ON -DOPENCV_EXTRA_MODULES_PATH=../opencv_contrib/modules
+
+// custonm, worked !!! bug not *.a file generated
+
+
+set CC=C:/MinGW/mingw64/bin/gcc.exe
+set CXX=C:/MinGW/mingw64/bin/g++.exe
+
+cmake .. -G "MinGW Makefiles" 
+-DCMAKE_BUILD_TYPE=Release 
+-DBUILD_SHARED_LIBS=OFF
+-DCMAKE_INSTALL_PREFIX=install 
+-DOPENCV_ENABLE_NONFREE=ON 
+-DBUILD_JAVA=OFF 
+-DBUILD_opencv_python3=OFF 
+-DCMAKE_INSTALL_PREFIX=install 
+
+// workedd.    valid *.a files but project still not working 
+
+// IMPORTARNT : SET COMPILER TO MINGWIN TO AVOID *.LIB FILES INSTEADD OF EXPECTED *.A
+
+set CC=C:/MinGW/mingw64/bin/gcc.exe
+set CXX=C:/MinGW/mingw64/bin/g++.exe
+
+cmake .. -G "MinGW Makefiles"      ^
+-DCMAKE_BUILD_TYPE=Release         ^
+-DBUILD_SHARED_LIBS=OFF            ^
+-DCMAKE_INSTALL_PREFIX=install     ^
+-DOPENCV_ENABLE_NONFREE=ON         ^
+-DBUILD_JAVA=OFF                   ^
+-DBUILD_opencv_python3=OFF         ^
+-DBUILD_opencv_videoio=OFF         ^
+-DBUILD_opencv_highgui=OFF         ^
+-DWITH_FFMPEG=OFF                  ^
+-DWITH_GSTREAMER=OFF               ^
+-DWITH_OPENEXR=OFF                 ^
+-DWITH_JASPER=OFF                  ^
+-DWITH_WEBP=OFF                    ^
+-DWITH_TIFF=OFF                    ^
+-DWITH_PNG=OFF                     ^
+-DWITH_JPEG=OFF                    ^
+-DWITH_OPENJPEG=OFF                ^
+-DCMAKE_EXE_LINKER_FLAGS="-static" ^
+-DCMAKE_SHARED_LINKER_FLAGS="-static" 
+
+ mingw32-make -j8
+
+ mingw32-make install
+
+*/
+
+/*
+
+toochain -> mingwx64 (no msys)
+
+how can I install opencv c++ static libraries compatible with mingw64 using vcpkg
 
 */
 
@@ -88,7 +147,7 @@ DLL_EXPORT const char* OpenCvReadImage()
     
     if (image.empty()) {
         std::cerr << "Could not read the image!" << std::endl;
-        return "error";
+        return "Could not read the image 'image.png'";
     }
     
     
@@ -104,5 +163,6 @@ DLL_EXPORT const char* OpenCvReadImage()
 
     return result;
 }
+
 
 
