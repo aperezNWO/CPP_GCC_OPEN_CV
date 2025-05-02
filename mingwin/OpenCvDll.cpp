@@ -34,6 +34,7 @@
 
         A) (MODIFICAR ARCHIVOS *.CPP)
         B) (dentro de la carpate "build")  mingw32-make
+        C) output en carpeta \bin
         C) Publicar via FTP
 
     7) [opcional] COMPILAR VIA VISUAL STIDIO CODE
