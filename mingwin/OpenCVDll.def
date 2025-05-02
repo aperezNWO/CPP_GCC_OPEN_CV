@@ -1,0 +1,4 @@
+LIBRARY OpenCvDll
+EXPORTS
+    OpenCvReadImage @1
+    
