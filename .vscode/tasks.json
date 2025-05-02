@@ -2,102 +2,37 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "type": "cppbuild",
-			"label": "(1) Build OpenCv DLL",
-			"command": "g++", // Path to g++ (ensure it's in your PATH or specify the full path)
-			"args": [
-                "-V",
-                "-o", "${workspaceFolder}\\mingwin\\OpenCvDll.dll",
-                "${workspaceFolder}\\mingwin\\OpenCvDll.cpp",
-                "-I${workspaceFolder}\\mingwin\\include",
-                "-L${workspaceFolder}\\mingwin\\x64\\mingw\\lib",
-                "${workspaceFolder}\\mingwin\\x64\\mingw\\lib\\libopencv_core4120.a", // Link against the single world library
-                "${workspaceFolder}\\mingwin\\x64\\mingw\\lib\\libopencv_imgproc4120.a", // Link against the single world library
-                "${workspaceFolder}\\mingwin\\x64\\mingw\\lib\\libopencv_imgcodecs4120.a",
-                "-shared",
-                "-static",
-                "-static-libgcc",
-                "-static-libstdc++",
-                "-m64",		
-                "-Wl,--subsystem,windows",	
+            "label": "(1) Build OpenCvDll.dll",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-shared", "-m64",
+                "-o", "OpenCvDll.dll",
+                "OpenCvDll.cpp", "OpenCvDll.def",
+                "-I/mingw64/include/opencv2",
+                "-Wl,--start-group",
+                "$(pkg-config", "--libs", "opencv4)",
+                "-Wl,--end-group"
             ],
-			"options": {
-				"cwd": "${workspaceFolder}" // Current working directory
-			},
-			"problemMatcher": ["$gcc"], // Match GCC-style error messages
-			"group": {
-				"kind": "build", // Mark as a build task
-				"isDefault": true // Set as the default build task
-			},
-			"detail": "Generated task for building Tesseract DLL"
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$gcc"],
         },
         {
-            "type": "cppbuild",
-			"label": "(2) Build OpenCv DLL EXE Test",
-			"command": "g++", // Path to g++ (ensure it's in your PATH or specify the full path)
-			"args": [
-                "-o",
-                "${workspaceFolder}\\mingwin\\OpenCVExe.exe",
-                "${workspaceFolder}\\mingwin\\OpenCvExe.cpp",
-                "-I${workspaceFolder}\\mingwin\\include",
-                "-L${workspaceFolder}\\mingwin\\x64\\mingw\\lib",
-                "-lopencv_core4120", // Link against the single world library
-                "-lopencv_imgproc4120",  // Ensure this is included
-                "-lopencv_imgcodecs4120",
-                "-static",
-                "-static-libgcc",
-                "-static-libstdc++",
-                "-m64",		
-                //"-Wl,--subsystem,windows",	
-			],
-			"options": {
-				"cwd": "${workspaceFolder}" // Current working directory
-			},
-			"problemMatcher": ["$gcc"], // Match GCC-style error messages
-			"group": {
-				"kind": "build", // Mark as a build task
-				"isDefault": true // Set as the default build task
-			},
-			"detail": "Generated task for building Tesseract DLL"
-        },
-        {
-            "type": "cppbuild",
-			"label": "(3) Build OpenCv DLL [bind file]",
-			"command": "g++", // Path to g++ (ensure it's in your PATH or specify the full path)
-			"args": [
-				"-g",
-				"${file}",
-				"-o",
-				"${fileDirname}\\${fileBasenameNoExtension}.dll",
-                "-I${workspaceFolder}\\mingwin\\include",
-                "-L${workspaceFolder}\\mingwin\\x64\\mingw\\lib",
-                "-lopencv_core4120", // Link against the single world library
-                "-lopencv_imgproc4120",  // Ensure this is included
-                "-lopencv_imgcodecs4120",
-                "-lpng", // Link against PNG
-                "-lzlib", // Link against zlib
-                "-ltiff", // Link against tiff
-				"-lwebp", // Link against webp
-                "-lopenjp2",
-                "-lwebp",
-                "-ljpeg",
-                "-llzma",
-                "-shared", // Create a shared library (DLL)
-				"-static", // Statically link libraries
-				"-static-libgcc", // Statically link GCC runtime
-				"-static-libstdc++", // Statically link C++ standard library
-				"-Wl,--subsystem,windows", // Specify subsystem as Windows GUI
-				"-m64" // Target 64-bit architecture
+            "label": "(2) Build OpenCvDll.dll (SHIELD)",
+            "type": "shell",
+            "command": "sh",
+            "args": [
+              "-c",
+              "g++ -shared -m64 -o OpenCvDll.dll OpenCvDll.cpp OpenCvDll.def -I/mingw64/include/opencv2 -Wl,--start-group $(pkg-config --cflags --libs opencv4) -Wl,--end-group -lopencv_gapi -lz -llibjpeg -llibpng -lopengl32 -lglu32 -lgdi32 -luser32 -lole32 -lopencv_ccalib -lopencv_cvv -lopencv_dnn_objdetect -lopencv_dnn_superres -lopencv_stitching -lopencv_alphamat -lopencv_aruco -lopencv_bgsegm -lopencv_dpm -lopencv_face -lopencv_freetype -lopencv_fuzzy -lopencv_hdf -lopencv_hfs -lopencv_img_hash -lopencv_intensity_transform -lopencv_line_descriptor -lopencv_mcc -lopencv_ovis -lopencv_quality -lopencv_rapid -lopencv_reg -lopencv_rgbd -lopencv_saliency -lopencv_sfm -lopencv_signal -lopencv_stereo -lopencv_structured_light -lopencv_phase_unwrapping -lopencv_superres -lopencv_optflow -lopencv_surface_matching -lopencv_tracking -lopencv_highgui -lopencv_datasets -lopencv_text -lopencv_plot -lopencv_videostab -lopencv_videoio -lopencv_viz -lopencv_wechat_qrcode -lopencv_xfeatures2d -lopencv_shape -lopencv_ml -lopencv_ximgproc -lopencv_video -lopencv_xobjdetect -lopencv_objdetect -lopencv_calib3d -lopencv_imgcodecs -lopencv_features2d -lopencv_dnn -lopencv_flann -lopencv_xphoto -lopencv_photo -lopencv_imgproc -lopencv_core -lpthread"
             ],
-            "options": {
-				"cwd": "${workspaceFolder}" // Current working directory
-			},
-			"problemMatcher": ["$gcc"], // Match GCC-style error messages
-			"group": {
-				"kind": "build", // Mark as a build task
-				"isDefault": true // Set as the default build task
-			},
-			"detail": "Generated task for building Tesseract DLL"
-        }
+            "group": {
+              "kind": "build",
+              "isDefault": true
+            },
+            "problemMatcher": ["$gcc"],
+          }
    ]
 }

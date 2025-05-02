@@ -15,42 +15,56 @@
 
 */
 
-/////////////////////////////////////////////////////////
+
 
 /*
 
-g++ -o OpenCvTest.exe OpenCvTest.cpp -lkernel32
+/////////////////////////////////////////////////////////
+// MSYS
+/////////////////////////////////////////////////////////
+
+g++ -o  OpenCvTest.exe OpenCvTest.cpp 
+
 
 */
 
 #include <iostream>
 #include <windows.h>
 
-// Function pointer type for the DLL function
+// Define the function signature from the DLL
 typedef const char* (__stdcall *OpenCvReadImageFunc)();
 
 int main() {
     // Load the DLL
-    HMODULE hDll = LoadLibrary("OpenCvDll.dll");
-    if (!hDll) {
-        std::cerr << "Failed to load DLL!" << std::endl;
+    HINSTANCE hDll = LoadLibraryW(L"OpenCvDll.dll");
+
+    if (hDll == nullptr) {
+        std::cerr << "Error: Could not load OpenCvDll.dll" << std::endl;
         return 1;
     }
 
+    std::cout << "OpenCvDll.dll loaded successfully." << std::endl;
+
     // Get the address of the exported function
-    OpenCvReadImageFunc OpenCvReadImage = (OpenCvReadImageFunc)GetProcAddress(hDll, "OpenCvReadImage");
-    if (!OpenCvReadImage) {
-        std::cerr << "Failed to find OpenCvReadImage in DLL!" << std::endl;
+    OpenCvReadImageFunc openCvReadImage = (OpenCvReadImageFunc)GetProcAddress(hDll, "OpenCvReadImage");
+
+    if (openCvReadImage == nullptr) {
+        std::cerr << "Error: Could not find function 'OpenCvReadImage' in the DLL." << std::endl;
         FreeLibrary(hDll);
         return 1;
     }
 
-    // Call the function
-    const char* result = OpenCvReadImage();
-    std::cout << "Result: " << result << std::endl;
+    std::cout << "Function 'OpenCvReadImage' found." << std::endl;
+
+    // Call the function from the DLL
+    const char* result = openCvReadImage();
+
+    // Print the result
+    std::cout << "Result from OpenCvReadImage: " << result << std::endl;
 
     // Free the DLL
     FreeLibrary(hDll);
+    std::cout << "OpenCvDll.dll unloaded." << std::endl;
 
     return 0;
 }

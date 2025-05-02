@@ -1,90 +1,45 @@
-/////////////////////////////////////////////////////////
-//
-/////////////////////////////////////////////////////////
 
+///////////////////////////////////////////////////////////////////
+// Application CPP_GCC_OPEN_CV v[1.0.1]
+///////////////////////////////////////////////////////////////////
 /*
+    1) Toolchain :  MSYS MINGW OPENCV
+    
+    2) pacman -S mingw-w64-x86_64-opencv
+    
+    3) Path to Generated Files:
+        a) C:\msys64\mingw64\bin
+        b) C:\msys64\mingw64\include\opencv2
+    
+    4) Dynamic ompilation Command  [STATIC IS NOT POSSIBLE] :
+    
+    g++ -shared -m64 -o OpenCvDll.dll OpenCvDll.cpp OpenCvDll.def \
+        -I/mingw64/include/opencv2 \
+            -Wl,--start-group $(pkg-config --cflags  --libs opencv4)  -Wl,--end-group \
+            -lopencv_gapi -lz -llibjpeg -llibpng -lopengl32 -lglu32 -lgdi32 -luser32 -lole32 -lopencv_ccalib -lopencv_cvv   -lopencv_dnn_objdetect -lopencv_dnn_superres -lopencv_stitching  -lopencv_alphamat  -lopencv_aruco -lopencv_bgsegm  -lopencv_dpm -lopencv_face -lopencv_freetype -lopencv_fuzzy -lopencv_hdf -lopencv_hfs -lopencv_img_hash -lopencv_intensity_transform -lopencv_line_descriptor -lopencv_mcc -lopencv_ovis -lopencv_quality -lopencv_rapid -lopencv_reg -lopencv_rgbd -lopencv_saliency -lopencv_sfm -lopencv_signal -lopencv_stereo -lopencv_structured_light -lopencv_phase_unwrapping -lopencv_superres -lopencv_optflow -lopencv_surface_matching -lopencv_tracking -lopencv_highgui -lopencv_datasets -lopencv_text -lopencv_plot -lopencv_videostab -lopencv_videoio -lopencv_viz -lopencv_wechat_qrcode -lopencv_xfeatures2d -lopencv_shape -lopencv_ml -lopencv_ximgproc -lopencv_video -lopencv_xobjdetect -lopencv_objdetect -lopencv_calib3d -lopencv_imgcodecs -lopencv_features2d -lopencv_dnn -lopencv_flann -lopencv_xphoto -lopencv_photo -lopencv_imgproc -lopencv_core -lpthread   
+    
+    5) CMAKE
 
-git clone https://github.com/opencv/opencv.git
-git clone https://github.com/opencv/opencv_contrib.git
+        md build && cd build
 
-md build
-cd build
+        cmake -G "MinGW Makefiles" ^
+            -DCMAKE_C_COMPILER="C:/msys64/mingw64/bin/gcc.exe" ^
+            -DCMAKE_CXX_COMPILER="C:/msys64/mingw64/bin/g++.exe" ^
+            ..
 
-// worked!!!!
+        mingw32-make
 
-set CC=C:/MinGW/mingw64/bin/gcc.exe
-set CXX=C:/MinGW/mingw64/bin/g++.exe
+    
+    6) CMAKE -> INTEGRACION CONTINUA
 
-cmake .. -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX=install -DOPENCV_ENABLE_NONFREE=ON -DOPENCV_EXTRA_MODULES_PATH=../opencv_contrib/modules
+        A) (MODIFICAR ARCHIVOS *.CPP)
+        B) (dentro de la carpate "build")  mingw32-make
+        C) Publicar via FTP
 
-// custonm, worked !!! bug not *.a file generated
+    7) [opcional] COMPILAR VIA VISUAL STIDIO CODE
 
-
-set CC=C:/MinGW/mingw64/bin/gcc.exe
-set CXX=C:/MinGW/mingw64/bin/g++.exe
-
-cmake .. -G "MinGW Makefiles" 
--DCMAKE_BUILD_TYPE=Release 
--DBUILD_SHARED_LIBS=OFF
--DCMAKE_INSTALL_PREFIX=install 
--DOPENCV_ENABLE_NONFREE=ON 
--DBUILD_JAVA=OFF 
--DBUILD_opencv_python3=OFF 
--DCMAKE_INSTALL_PREFIX=install 
-
-// workedd.    valid *.a files but project still not working 
-
-// IMPORTARNT : SET COMPILER TO MINGWIN TO AVOID *.LIB FILES INSTEADD OF EXPECTED *.A
-
-set CC=C:/MinGW/mingw64/bin/gcc.exe
-set CXX=C:/MinGW/mingw64/bin/g++.exe
-
-cmake .. -G "MinGW Makefiles"      ^
--DCMAKE_BUILD_TYPE=Release         ^
--DBUILD_SHARED_LIBS=OFF            ^
--DCMAKE_INSTALL_PREFIX=install     ^
--DOPENCV_ENABLE_NONFREE=ON         ^
--DBUILD_JAVA=OFF                   ^
--DBUILD_opencv_python3=OFF         ^
--DBUILD_opencv_videoio=OFF         ^
--DBUILD_opencv_highgui=OFF         ^
--DWITH_FFMPEG=OFF                  ^
--DWITH_GSTREAMER=OFF               ^
--DWITH_OPENEXR=OFF                 ^
--DWITH_JASPER=OFF                  ^
--DWITH_WEBP=OFF                    ^
--DWITH_TIFF=OFF                    ^
--DWITH_PNG=OFF                     ^
--DWITH_JPEG=OFF                    ^
--DWITH_OPENJPEG=OFF                ^
--DCMAKE_EXE_LINKER_FLAGS="-static" ^
--DCMAKE_SHARED_LINKER_FLAGS="-static" 
-
- mingw32-make -j8
-
- mingw32-make install
-
+    
 */
-
-/*
-
-toochain -> mingwx64 (no msys)
-
-how can I install opencv c++ static libraries compatible with mingw64 using vcpkg
-
-1) vcpkg_mingw64
-
-    a) clone vcpkg (different from existeng vcpkg compiled for uctr64)
-
-2) vcpkg install opencv4:x64-mingw-static
-
-    a) look for *.a files
-
-    b) install missing vcpkg packages by demand.
-
-*/
-
-/////////////////////////////////////////////////////////
 
 #include <opencv2/opencv.hpp>
 #include <vector>
@@ -92,7 +47,7 @@ how can I install opencv c++ static libraries compatible with mingw64 using vcpk
 #include <iostream>
 
 
-#define DLL_EXPORT extern "C" __declspec(dllexport) __stdcall __cdecl
+#define DLL_EXPORT extern "C" __declspec(dllexport) __stdcall 
 
 using namespace std;
 
@@ -130,14 +85,14 @@ std::vector<std::string> detectShapes(const cv::Mat& inputImage) {
 
         std::string shape;
         if (approx.size() == 3) {
-            shape = "Triángulo";
+            shape = "[Triángulo]";
         } else if (approx.size() == 4) {
             // Calculate bounding rectangle and aspect ratio
             cv::Rect rect = cv::boundingRect(approx);
             double aspectRatio = static_cast<double>(rect.width) / rect.height;
-            shape = (aspectRatio >= 0.95 && aspectRatio <= 1.05) ? "Cuadrado" : "Rectángulo";
+            shape = (aspectRatio >= 0.95 && aspectRatio <= 1.05) ? "[Cuadrado]" : "[Rectángulo]";
         } else if (approx.size() > 4) {
-            shape = "Círculo";
+            shape = "[Círculo]";
         }
 
         if (!shape.empty()) {
@@ -149,18 +104,18 @@ std::vector<std::string> detectShapes(const cv::Mat& inputImage) {
     return shapes;
 }
 
+
 DLL_EXPORT const char* OpenCvReadImage()
 {
     const char * result = "OK";
-
+ 
     cv::Mat image = cv::imread("image.png");
     
     if (image.empty()) {
         std::cerr << "Could not read the image!" << std::endl;
         return "Could not read the image 'image.png'";
     }
-    
-    
+
     // Detect shapes in the image
     std::vector<std::string> shapes = detectShapes(image);
 
@@ -174,5 +129,28 @@ DLL_EXPORT const char* OpenCvReadImage()
     return result;
 }
 
+DLL_EXPORT const char* OpenCvReadImagePath(char* path)
+{
+    const char * result = "OK";
+ 
+    cv::Mat image = cv::imread(path);
+    
+    if (image.empty()) {
+        std::cerr << "Could not read the image!" << std::endl;
+        return "Could not read the image 'image.png'";
+    }
+
+    // Detect shapes in the image
+    std::vector<std::string> shapes = detectShapes(image);
+
+    // Print the detected shapes
+    std::cout << "Detected shapes:" << std::endl;
+    for (const std::string& shape : shapes) {
+        //std::cout << "- " << shape << std::endl;
+        result = shape.c_str();
+    }
+
+    return result;
+}
 
 
