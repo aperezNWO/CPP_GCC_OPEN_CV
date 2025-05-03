@@ -2,13 +2,13 @@
 #define OPENCVDLL_H
 #endif
 
-#include <fstream>'
+#include <fstream>
 
 #pragma hdrstop
 #pragma argsused
 #pragma once
 
-#define DLL_EXPORT extern "C" __declspec(dllexport) __stdcall __cdecl
+#define DLL_EXPORT extern "C" __declspec(dllexport) __stdcall 
 
 using namespace std;
 
