@@ -13,6 +13,8 @@
     
     4) Dynamic ompilation Command  [STATIC IS NOT POSSIBLE] :
     
+    cd /c/Users/pablo.perez/dev/cpp/CPP_GCC_OPEN_CV/src/mingwin
+
     g++ -shared -m64 -o OpenCvDll.dll OpenCvDll.cpp OpenCvDll.def \
         -I/mingw64/include/opencv2 \
             -Wl,--start-group $(pkg-config --cflags  --libs opencv4)  -Wl,--end-group \
@@ -22,9 +24,18 @@
 
         md build && cd build
 
+        // dos / powershell
+        
         cmake -G "MinGW Makefiles" ^
             -DCMAKE_C_COMPILER="C:/msys64/mingw64/bin/gcc.exe" ^
             -DCMAKE_CXX_COMPILER="C:/msys64/mingw64/bin/g++.exe" ^
+            ..
+
+        // msys 
+        
+        cmake -G "MinGW Makefiles" \
+            -DCMAKE_C_COMPILER="C:/msys64/mingw64/bin/gcc.exe" \
+            -DCMAKE_CXX_COMPILER="C:/msys64/mingw64/bin/g++.exe" \
             ..
 
         mingw32-make
@@ -46,13 +57,76 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include "OpenCvDll.h"
 
+//
+OpenCvApp::OpenCvApp()
+{
+     //
+     ReadConfigFile();
+}
+//
+OpenCvApp::~OpenCvApp()
+{
+    //
+}
+//
+const char*  OpenCvApp::GetOpenCvAppVersion()
+{
+    //
+    return this->configMap["DLL_VERSION"].c_str();
+}
+//
+const char* OpenCvApp::OpenCvReadImage()
+{
+    const char * result = "OK";
+ 
+    cv::Mat image = cv::imread("image.png");
+    
+    if (image.empty()) {
+        std::cerr << "Could not read the image!" << std::endl;
+        return "Could not read the image 'image.png'";
+    }
 
-#define DLL_EXPORT extern "C" __declspec(dllexport) __stdcall 
+    // Detect shapes in the image
+    std::vector<std::string> shapes = detectShapes(image);
 
-using namespace std;
+    // Print the detected shapes
+    std::cout << "Detected shapes:" << std::endl;
+    for (const std::string& shape : shapes) {
+        //std::cout << "- " << shape << std::endl;
+        result = shape.c_str();
+    }
 
-std::vector<std::string> detectShapes(const cv::Mat& inputImage) {
+    return result;
+}
+//
+const char* OpenCvApp::OpenCvReadImagePath(char* path)
+{
+    const char * result = "OK";
+ 
+    cv::Mat image = cv::imread(path);
+    
+    if (image.empty()) {
+        std::cerr << "Could not read the image!" << std::endl;
+        return "Could not read the image 'image.png'";
+    }
+
+    // Detect shapes in the image
+    std::vector<std::string> shapes = detectShapes(image);
+
+    // Print the detected shapes
+    std::cout << "Detected shapes:" << std::endl;
+    for (const std::string& shape : shapes) {
+        //std::cout << "- " << shape << std::endl;
+        result = shape.c_str();
+    }
+
+    return result;
+}
+//
+std::vector<std::string> OpenCvApp::detectShapes(const cv::Mat& inputImage) 
+{
     std::vector<std::string> shapes;
 
     // Ensure the input image is valid
@@ -104,54 +178,78 @@ std::vector<std::string> detectShapes(const cv::Mat& inputImage) {
     // Return the detected shapes
     return shapes;
 }
-
-
-DLL_EXPORT const char* OpenCvReadImage()
+//
+int          OpenCvApp::ReadConfigFile()
 {
-    const char * result = "OK";
- 
-    cv::Mat image = cv::imread("image.png");
-    
-    if (image.empty()) {
-        std::cerr << "Could not read the image!" << std::endl;
-        return "Could not read the image 'image.png'";
+    // Open the configuration file
+    std::ifstream configFile("opencv.ini");
+
+    // Check if the file is opened successfully
+    if (!configFile.is_open()) {
+        std::cerr << "Error opening the configuration file." << std::endl;
+        return 1;
     }
 
-    // Detect shapes in the image
-    std::vector<std::string> shapes = detectShapes(image);
+    // Read the file line by line
+    std::string line = "";
+    while (std::getline(configFile, line)) {
+        // Skip empty lines or lines starting with '#' (comments)
+        if (line.empty() || line[0] == '#') {
+            continue;
+        }
 
-    // Print the detected shapes
-    std::cout << "Detected shapes:" << std::endl;
-    for (const std::string& shape : shapes) {
-        //std::cout << "- " << shape << std::endl;
-        result = shape.c_str();
+        // Split the line into key and value
+        std::istringstream iss(line);
+        std::string key, value;
+        if (std::getline(iss, key, '=') && std::getline(iss, value))
+        {
+            // Trim leading and trailing whitespaces from key and value
+            key.erase(0, key.find_first_not_of(" \t"));
+            key.erase(key.find_last_not_of(" \t") + 1);
+            value.erase(0, value.find_first_not_of(" \t"));
+            value.erase(value.find_last_not_of(" \t") + 1);
+
+            // Insert key-value pair into the map
+            this->configMap[key] = value;
+        }
     }
 
-    return result;
+    // Close the configuration file
+    configFile.close();
+
+    //
+    return 0;
+}    
+
+////////////////////////////////////////////////////////////////
+// DLL ENTRY POINTS
+////////////////////////////////////////////////////////////////
+
+//
+DLL_EXPORT const char* GetOpenCvAppVersion()
+{
+      //
+      std::unique_ptr<OpenCvApp> uniquePtr = std::make_unique<OpenCvApp>();
+      //
+      return uniquePtr->GetOpenCvAppVersion();
 }
 
+//
+DLL_EXPORT const char* OpenCvReadImage()
+{
+      //
+      std::unique_ptr<OpenCvApp> uniquePtr = std::make_unique<OpenCvApp>();
+      //
+      return uniquePtr->OpenCvReadImage();
+}
+
+//
 DLL_EXPORT const char* OpenCvReadImagePath(char* path)
 {
-    const char * result = "OK";
- 
-    cv::Mat image = cv::imread(path);
-    
-    if (image.empty()) {
-        std::cerr << "Could not read the image!" << std::endl;
-        return "Could not read the image 'image.png'";
-    }
-
-    // Detect shapes in the image
-    std::vector<std::string> shapes = detectShapes(image);
-
-    // Print the detected shapes
-    std::cout << "Detected shapes:" << std::endl;
-    for (const std::string& shape : shapes) {
-        //std::cout << "- " << shape << std::endl;
-        result = shape.c_str();
-    }
-
-    return result;
+      //
+      std::unique_ptr<OpenCvApp> uniquePtr = std::make_unique<OpenCvApp>();
+      //
+      return uniquePtr->OpenCvReadImagePath(path);
 }
 
 

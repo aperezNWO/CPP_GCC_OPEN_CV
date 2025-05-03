@@ -1,5 +1,5 @@
 CMakeFiles/OpenCvDll.dir/OpenCvDll.cpp.obj: \
- C:\Users\pablo.perez\dev\cpp\CPP_GCC_OPEN_CV\mingwin\OpenCvDll.cpp \
+ C:\Users\pablo.perez\dev\cpp\CPP_GCC_OPEN_CV\src\mingwin\OpenCvDll.cpp \
  C:/msys64/mingw64/include/opencv4/opencv2/opencv.hpp \
  C:/msys64/mingw64/include/opencv4/opencv2/opencv_modules.hpp \
  C:/msys64/mingw64/include/opencv4/opencv2/core.hpp \
@@ -366,4 +366,9 @@ CMakeFiles/OpenCvDll.dir/OpenCvDll.cpp.obj: \
  C:/msys64/mingw64/include/opencv4/opencv2/stitching/detail/camera.hpp \
  C:/msys64/mingw64/include/opencv4/opencv2/video.hpp \
  C:/msys64/mingw64/include/opencv4/opencv2/video/tracking.hpp \
- C:/msys64/mingw64/include/opencv4/opencv2/video/background_segm.hpp
+ C:/msys64/mingw64/include/opencv4/opencv2/video/background_segm.hpp \
+ C:\Users\pablo.perez\dev\cpp\CPP_GCC_OPEN_CV\src\mingwin\OpenCvDll.h \
+ C:/msys64/mingw64/include/c++/15.1.0/fstream \
+ C:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32/bits/basic_file.h \
+ C:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32/bits/c++io.h \
+ C:/msys64/mingw64/include/c++/15.1.0/bits/fstream.tcc

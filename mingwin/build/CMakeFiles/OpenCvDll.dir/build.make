@@ -52,10 +52,10 @@ RM = C:\msys64\mingw64\bin\cmake.exe -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\pablo.perez\dev\cpp\CPP_GCC_OPEN_CV\mingwin
+CMAKE_SOURCE_DIR = C:\Users\pablo.perez\dev\cpp\CPP_GCC_OPEN_CV\src\mingwin
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\pablo.perez\dev\cpp\CPP_GCC_OPEN_CV\mingwin\build
+CMAKE_BINARY_DIR = C:\Users\pablo.perez\dev\cpp\CPP_GCC_OPEN_CV\src\mingwin\build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/OpenCvDll.dir/depend.make
@@ -73,18 +73,18 @@ CMakeFiles/OpenCvDll.dir/codegen:
 
 CMakeFiles/OpenCvDll.dir/OpenCvDll.cpp.obj: CMakeFiles/OpenCvDll.dir/flags.make
 CMakeFiles/OpenCvDll.dir/OpenCvDll.cpp.obj: CMakeFiles/OpenCvDll.dir/includes_CXX.rsp
-CMakeFiles/OpenCvDll.dir/OpenCvDll.cpp.obj: C:/Users/pablo.perez/dev/cpp/CPP_GCC_OPEN_CV/mingwin/OpenCvDll.cpp
+CMakeFiles/OpenCvDll.dir/OpenCvDll.cpp.obj: C:/Users/pablo.perez/dev/cpp/CPP_GCC_OPEN_CV/src/mingwin/OpenCvDll.cpp
 CMakeFiles/OpenCvDll.dir/OpenCvDll.cpp.obj: CMakeFiles/OpenCvDll.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\pablo.perez\dev\cpp\CPP_GCC_OPEN_CV\mingwin\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/OpenCvDll.dir/OpenCvDll.cpp.obj"
-	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/OpenCvDll.dir/OpenCvDll.cpp.obj -MF CMakeFiles\OpenCvDll.dir\OpenCvDll.cpp.obj.d -o CMakeFiles\OpenCvDll.dir\OpenCvDll.cpp.obj -c C:\Users\pablo.perez\dev\cpp\CPP_GCC_OPEN_CV\mingwin\OpenCvDll.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\pablo.perez\dev\cpp\CPP_GCC_OPEN_CV\src\mingwin\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/OpenCvDll.dir/OpenCvDll.cpp.obj"
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/OpenCvDll.dir/OpenCvDll.cpp.obj -MF CMakeFiles\OpenCvDll.dir\OpenCvDll.cpp.obj.d -o CMakeFiles\OpenCvDll.dir\OpenCvDll.cpp.obj -c C:\Users\pablo.perez\dev\cpp\CPP_GCC_OPEN_CV\src\mingwin\OpenCvDll.cpp
 
 CMakeFiles/OpenCvDll.dir/OpenCvDll.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/OpenCvDll.dir/OpenCvDll.cpp.i"
-	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\pablo.perez\dev\cpp\CPP_GCC_OPEN_CV\mingwin\OpenCvDll.cpp > CMakeFiles\OpenCvDll.dir\OpenCvDll.cpp.i
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\pablo.perez\dev\cpp\CPP_GCC_OPEN_CV\src\mingwin\OpenCvDll.cpp > CMakeFiles\OpenCvDll.dir\OpenCvDll.cpp.i
 
 CMakeFiles/OpenCvDll.dir/OpenCvDll.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/OpenCvDll.dir/OpenCvDll.cpp.s"
-	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\pablo.perez\dev\cpp\CPP_GCC_OPEN_CV\mingwin\OpenCvDll.cpp -o CMakeFiles\OpenCvDll.dir\OpenCvDll.cpp.s
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\pablo.perez\dev\cpp\CPP_GCC_OPEN_CV\src\mingwin\OpenCvDll.cpp -o CMakeFiles\OpenCvDll.dir\OpenCvDll.cpp.s
 
 # Object files for target OpenCvDll
 OpenCvDll_OBJECTS = \
@@ -93,17 +93,17 @@ OpenCvDll_OBJECTS = \
 # External object files for target OpenCvDll
 OpenCvDll_EXTERNAL_OBJECTS =
 
-C:/Users/pablo.perez/dev/cpp/CPP_GCC_OPEN_CV/mingwin/bin/OpenCvDll.dll: CMakeFiles/OpenCvDll.dir/OpenCvDll.cpp.obj
-C:/Users/pablo.perez/dev/cpp/CPP_GCC_OPEN_CV/mingwin/bin/OpenCvDll.dll: CMakeFiles/OpenCvDll.dir/build.make
-C:/Users/pablo.perez/dev/cpp/CPP_GCC_OPEN_CV/mingwin/bin/OpenCvDll.dll: C:/Users/pablo.perez/dev/cpp/CPP_GCC_OPEN_CV/mingwin/OpenCvDll.def
-C:/Users/pablo.perez/dev/cpp/CPP_GCC_OPEN_CV/mingwin/bin/OpenCvDll.dll: CMakeFiles/OpenCvDll.dir/linkLibs.rsp
-C:/Users/pablo.perez/dev/cpp/CPP_GCC_OPEN_CV/mingwin/bin/OpenCvDll.dll: CMakeFiles/OpenCvDll.dir/objects1.rsp
-C:/Users/pablo.perez/dev/cpp/CPP_GCC_OPEN_CV/mingwin/bin/OpenCvDll.dll: CMakeFiles/OpenCvDll.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\pablo.perez\dev\cpp\CPP_GCC_OPEN_CV\mingwin\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX shared library C:\Users\pablo.perez\dev\cpp\CPP_GCC_OPEN_CV\mingwin\bin\OpenCvDll.dll"
+C:/Users/pablo.perez/dev/cpp/CPP_GCC_OPEN_CV/src/mingwin/bin/OpenCvDll.dll: CMakeFiles/OpenCvDll.dir/OpenCvDll.cpp.obj
+C:/Users/pablo.perez/dev/cpp/CPP_GCC_OPEN_CV/src/mingwin/bin/OpenCvDll.dll: CMakeFiles/OpenCvDll.dir/build.make
+C:/Users/pablo.perez/dev/cpp/CPP_GCC_OPEN_CV/src/mingwin/bin/OpenCvDll.dll: C:/Users/pablo.perez/dev/cpp/CPP_GCC_OPEN_CV/src/mingwin/OpenCvDll.def
+C:/Users/pablo.perez/dev/cpp/CPP_GCC_OPEN_CV/src/mingwin/bin/OpenCvDll.dll: CMakeFiles/OpenCvDll.dir/linkLibs.rsp
+C:/Users/pablo.perez/dev/cpp/CPP_GCC_OPEN_CV/src/mingwin/bin/OpenCvDll.dll: CMakeFiles/OpenCvDll.dir/objects1.rsp
+C:/Users/pablo.perez/dev/cpp/CPP_GCC_OPEN_CV/src/mingwin/bin/OpenCvDll.dll: CMakeFiles/OpenCvDll.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\pablo.perez\dev\cpp\CPP_GCC_OPEN_CV\src\mingwin\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX shared library C:\Users\pablo.perez\dev\cpp\CPP_GCC_OPEN_CV\src\mingwin\bin\OpenCvDll.dll"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\OpenCvDll.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-CMakeFiles/OpenCvDll.dir/build: C:/Users/pablo.perez/dev/cpp/CPP_GCC_OPEN_CV/mingwin/bin/OpenCvDll.dll
+CMakeFiles/OpenCvDll.dir/build: C:/Users/pablo.perez/dev/cpp/CPP_GCC_OPEN_CV/src/mingwin/bin/OpenCvDll.dll
 .PHONY : CMakeFiles/OpenCvDll.dir/build
 
 CMakeFiles/OpenCvDll.dir/clean:
@@ -111,6 +111,6 @@ CMakeFiles/OpenCvDll.dir/clean:
 .PHONY : CMakeFiles/OpenCvDll.dir/clean
 
 CMakeFiles/OpenCvDll.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\pablo.perez\dev\cpp\CPP_GCC_OPEN_CV\mingwin C:\Users\pablo.perez\dev\cpp\CPP_GCC_OPEN_CV\mingwin C:\Users\pablo.perez\dev\cpp\CPP_GCC_OPEN_CV\mingwin\build C:\Users\pablo.perez\dev\cpp\CPP_GCC_OPEN_CV\mingwin\build C:\Users\pablo.perez\dev\cpp\CPP_GCC_OPEN_CV\mingwin\build\CMakeFiles\OpenCvDll.dir\DependInfo.cmake "--color=$(COLOR)"
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\pablo.perez\dev\cpp\CPP_GCC_OPEN_CV\src\mingwin C:\Users\pablo.perez\dev\cpp\CPP_GCC_OPEN_CV\src\mingwin C:\Users\pablo.perez\dev\cpp\CPP_GCC_OPEN_CV\src\mingwin\build C:\Users\pablo.perez\dev\cpp\CPP_GCC_OPEN_CV\src\mingwin\build C:\Users\pablo.perez\dev\cpp\CPP_GCC_OPEN_CV\src\mingwin\build\CMakeFiles\OpenCvDll.dir\DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/OpenCvDll.dir/depend
 

@@ -1,7 +1,7 @@
 {
 	"InstallScripts" : 
 	[
-		"C:/Users/pablo.perez/dev/cpp/CPP_GCC_OPEN_CV/mingwin/build/cmake_install.cmake"
+		"C:/Users/pablo.perez/dev/cpp/CPP_GCC_OPEN_CV/src/mingwin/build/cmake_install.cmake"
 	],
 	"Parallel" : false
 }

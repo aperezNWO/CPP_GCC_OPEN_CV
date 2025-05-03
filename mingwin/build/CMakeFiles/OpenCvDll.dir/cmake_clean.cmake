@@ -1,8 +1,8 @@
 file(REMOVE_RECURSE
-  "C:/Users/pablo.perez/dev/cpp/CPP_GCC_OPEN_CV/mingwin/bin/OpenCvDll.dll"
-  "C:/Users/pablo.perez/dev/cpp/CPP_GCC_OPEN_CV/mingwin/bin/OpenCvDll.dll.a"
-  "C:/Users/pablo.perez/dev/cpp/CPP_GCC_OPEN_CV/mingwin/bin/OpenCvDll.dll.manifest"
-  "C:/Users/pablo.perez/dev/cpp/CPP_GCC_OPEN_CV/mingwin/bin/OpenCvDll.pdb"
+  "C:/Users/pablo.perez/dev/cpp/CPP_GCC_OPEN_CV/src/mingwin/bin/OpenCvDll.dll"
+  "C:/Users/pablo.perez/dev/cpp/CPP_GCC_OPEN_CV/src/mingwin/bin/OpenCvDll.dll.a"
+  "C:/Users/pablo.perez/dev/cpp/CPP_GCC_OPEN_CV/src/mingwin/bin/OpenCvDll.dll.manifest"
+  "C:/Users/pablo.perez/dev/cpp/CPP_GCC_OPEN_CV/src/mingwin/bin/OpenCvDll.pdb"
   "CMakeFiles/OpenCvDll.dir/OpenCvDll.cpp.obj"
   "CMakeFiles/OpenCvDll.dir/OpenCvDll.cpp.obj.d"
 )

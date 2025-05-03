@@ -1,38 +1,21 @@
 {
-    "version": "2.0.0",
-    "tasks": [
-        {
-            "label": "(1) Build OpenCvDll.dll",
-            "type": "shell",
-            "command": "g++",
-            "args": [
-                "-shared", "-m64",
-                "-o", "OpenCvDll.dll",
-                "OpenCvDll.cpp", "OpenCvDll.def",
-                "-I/mingw64/include/opencv2",
-                "-Wl,--start-group",
-                "$(pkg-config", "--libs", "opencv4)",
-                "-Wl,--end-group"
-            ],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
-            "problemMatcher": ["$gcc"],
-        },
-        {
-            "label": "(2) Build OpenCvDll.dll (SHIELD)",
-            "type": "shell",
-            "command": "sh",
-            "args": [
-              "-c",
-              "g++ -shared -m64 -o OpenCvDll.dll OpenCvDll.cpp OpenCvDll.def -I/mingw64/include/opencv2 -Wl,--start-group $(pkg-config --cflags --libs opencv4) -Wl,--end-group -lopencv_gapi -lz -llibjpeg -llibpng -lopengl32 -lglu32 -lgdi32 -luser32 -lole32 -lopencv_ccalib -lopencv_cvv -lopencv_dnn_objdetect -lopencv_dnn_superres -lopencv_stitching -lopencv_alphamat -lopencv_aruco -lopencv_bgsegm -lopencv_dpm -lopencv_face -lopencv_freetype -lopencv_fuzzy -lopencv_hdf -lopencv_hfs -lopencv_img_hash -lopencv_intensity_transform -lopencv_line_descriptor -lopencv_mcc -lopencv_ovis -lopencv_quality -lopencv_rapid -lopencv_reg -lopencv_rgbd -lopencv_saliency -lopencv_sfm -lopencv_signal -lopencv_stereo -lopencv_structured_light -lopencv_phase_unwrapping -lopencv_superres -lopencv_optflow -lopencv_surface_matching -lopencv_tracking -lopencv_highgui -lopencv_datasets -lopencv_text -lopencv_plot -lopencv_videostab -lopencv_videoio -lopencv_viz -lopencv_wechat_qrcode -lopencv_xfeatures2d -lopencv_shape -lopencv_ml -lopencv_ximgproc -lopencv_video -lopencv_xobjdetect -lopencv_objdetect -lopencv_calib3d -lopencv_imgcodecs -lopencv_features2d -lopencv_dnn -lopencv_flann -lopencv_xphoto -lopencv_photo -lopencv_imgproc -lopencv_core -lpthread"
-            ],
-            "group": {
-              "kind": "build",
-              "isDefault": true
-            },
-            "problemMatcher": ["$gcc"],
+  "version": "2.0.0",
+  "tasks": [
+    {
+        "label": "build OpenCvDll",
+        "type": "shell",
+        "command": "g++ -shared -m64 -o OpenCvDll.dll OpenCvDll.cpp OpenCvDll.def -I/mingw64/include/opencv2 -Wl,--start-group $(pkg-config --libs opencv4) -Wl,--end-group",
+        "options": {
+          "shell": {
+            "executable": "C:\\Program Files\\Git\\bin\\bash.exe"
           }
-   ]
+        },
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        },
+        "problemMatcher": []
+      }
+  	]
 }
+
