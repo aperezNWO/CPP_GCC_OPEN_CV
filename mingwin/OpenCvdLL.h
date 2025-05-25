@@ -19,6 +19,7 @@ class OpenCvApp
         OpenCvApp();
         ~OpenCvApp();
         //
+        const char*              GetOpenCvAPIVersion();
         const char*              GetOpenCvAppVersion();
         const char*              OpenCvReadImage();
         const char*              OpenCvReadImagePath(char* path);

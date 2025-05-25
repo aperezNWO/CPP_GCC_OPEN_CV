@@ -1,14 +1,10 @@
 ////////////////////////////////////////////////////////
-// MSYS
+// MSYS MINGW64
 ////////////////////////////////////////////////////////
 
 /*
 
     g++ OpenCvExe.cpp -o OpenCvExe.exe $(pkg-config --cflags --libs opencv4)
-
-    libOpenEXR-3_3.dll windows
-
-    mingw-w64-x86_64-openexr-3.3.3-2
 
 */
 
