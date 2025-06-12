@@ -339,6 +339,20 @@ int OpenCvApp::generateJulia()
     return 0;
 }
 
+//
+const char* OpenCvApp::GetCPPSTDVersion(long int cppVersion)	
+{
+	switch (cppVersion) {
+	        case 199711L: return "C++98/C++03";
+	        case 201103L: return "C++11";
+	        case 201402L: return "C++14";
+	        case 201703L: return "C++17";
+	        case 202002L: return "C++20";
+	        case 202302L: return "C++23";
+	        default: return "Unknown C++ Standard";
+	}
+}
+	
 ////////////////////////////////////////////////////////////////
 // DLL ENTRY POINTS
 ////////////////////////////////////////////////////////////////
@@ -389,6 +403,14 @@ DLL_EXPORT int generateJulia() {
 	std::unique_ptr<OpenCvApp> uniquePtr = std::make_unique<OpenCvApp>();
 	//
 	return uniquePtr->generateJulia();
+}
+
+// C++ VERSION
+DLL_EXPORT const char* OpenCv_GetCPPSTDVersion()
+{
+	OpenCvApp *app = new OpenCvApp();
+	
+	return app->GetCPPSTDVersion(__cplusplus);	
 }
 
 ////////////////////////////////////////////////////////////////

@@ -40,6 +40,7 @@ class OpenCvApp
 		Mat                      generateJulia(int width, int height, int maxIterations, complex<double> c);                     
         int                      generateJulia();
         int                      ReadConfigFile();
+        const char*              GetCPPSTDVersion(long int cppVersion);
      public :
         //
         map<string, string>      configMap;
