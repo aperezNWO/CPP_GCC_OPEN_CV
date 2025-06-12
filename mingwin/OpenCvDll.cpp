@@ -11,7 +11,7 @@
         a) C:\msys64\mingw64\bin
         b) C:\msys64\mingw64\include\opencv2
 
-    4) Dynamic ompilation Command  [STATIC IS NOT POSSIBLE] :
+    4) Dynamic compilation Command  [STATIC IS NOT POSSIBLE] :
 
     cd /c/Users/pablo.perez/dev/cpp/CPP_GCC_OPEN_CV/src/mingwin
 
@@ -38,6 +38,8 @@
             -DCMAKE_CXX_COMPILER="C:/msys64/mingw64/bin/g++.exe" \
             ..
 
+		// windows
+		
         mingw32-make
 
 
@@ -50,10 +52,6 @@
 
 */
 
-#include <opencv2/opencv.hpp>
-#include <vector>
-#include <string>
-#include <iostream>
 #include "OpenCvDll.h"
 
 //
@@ -92,7 +90,7 @@ const char* OpenCvApp::OpenCvReadImage() {
 	std::vector<std::string> shapes = detectShapes(image);
 
 	// Print the detected shapes
-	std::cout << "Detected shapes:" << std::endl;
+	//std::cout << "Detected shapes:" << std::endl;
 	for (const std::string& shape : shapes) {
 		//std::cout << "- " << shape << std::endl;
 		result = shape.c_str();
@@ -115,7 +113,7 @@ const char* OpenCvApp::OpenCvReadImagePath(char* path) {
 	std::vector<std::string> shapes = detectShapes(image);
 
 	// Print the detected shapes
-	std::cout << "Detected shapes:" << std::endl;
+	// std::cout << "Detected shapes:" << std::endl;
 	for (const std::string& shape : shapes) {
 		//std::cout << "- " << shape << std::endl;
 		result = shape.c_str();
@@ -124,7 +122,8 @@ const char* OpenCvApp::OpenCvReadImagePath(char* path) {
 	return result;
 }
 //
-std::vector<std::string> OpenCvApp::detectShapes(const cv::Mat& inputImage) {
+vector<string> OpenCvApp::detectShapes(const cv::Mat& inputImage) {
+	//
 	std::vector<std::string> shapes;
 
 	// Ensure the input image is valid
@@ -216,6 +215,129 @@ int          OpenCvApp::ReadConfigFile() {
 	//
 	return 0;
 }
+//
+Vec3b GetColor(int iteration, int maxIterations) {
+    if (iteration == maxIterations) {
+        return Vec3b(0, 0, 0); // Black for points inside the set
+    }
+
+    // Map iteration count to RGB
+    float t = static_cast<float>(iteration) / maxIterations;
+    uchar r = static_cast<uchar>(9 * (1 - t) * t * t * t * 255);
+    uchar g = static_cast<uchar>(15 * (1 - t) * (1 - t) * t * t * 255);
+    uchar b = static_cast<uchar>(8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255);
+
+    return Vec3b(b, g, r);
+};
+// Function to compute the Mandelbrot set
+Mat OpenCvApp::generateMandelbrot(int width, int height, int maxIterations) 
+{
+  Mat img(height, width, CV_8UC3, Scalar(0, 0, 0));
+
+    for (int y = 0; y < height; ++y) {
+        for (int x = 0; x < width; ++x) {
+        	
+            double cx = -2.0 + (x / static_cast<double>(width)) * 3.5;
+            double cy = -1.5 + (y / static_cast<double>(height)) * 3.0;
+            
+            complex<double> z(0, 0);
+            
+			complex<double> c(cx, cy);
+
+            int iteration = 0;
+            while (abs(z) < 2 && iteration < maxIterations) {
+                z = z * z + c;
+                ++iteration;
+            }
+
+            img.at<Vec3b>(y, x) = GetColor(iteration, maxIterations);
+        }
+    }
+    return img;
+}
+//
+int OpenCvApp::generateMandelbrot()
+{
+ 	int width = 800, height = 800;
+
+    // Random number generator
+    random_device rd;                                             // Seed for the random number engine
+    mt19937 gen(rd());                                            // Mersenne Twister engine
+    uniform_int_distribution<int>     distMaxIterations(1,255);   // Range [1, 255]
+    
+    // Generate random values
+    int    maxIterations = distMaxIterations(gen);
+	
+    // Generate the Mandelbrot fractal
+    Mat fractalImage = generateMandelbrot(width, height, maxIterations);
+
+    // Save the fractal image
+    imwrite("mandelbrot.png", fractalImage);
+
+    return 0;
+} 
+//
+Mat OpenCvApp::generateJulia(int width, int height, int maxIterations, complex<double> c) 
+{
+
+    Mat img(height, width, CV_8UC3, Scalar(0, 0, 0));
+
+    for (int y = 0; y < height; ++y) {
+        for (int x = 0; x < width; ++x) {
+            // Map pixel position to a point in the complex plane
+            double zx = -1.5 + (x / static_cast<double>(width)) * 3.0;
+            double zy = -1.5 + (y / static_cast<double>(height)) * 3.0;
+            complex<double> z(zx, zy);
+
+            int iteration = 0;
+            while (abs(z) < 2 && iteration < maxIterations) {
+                z = z * z + c;
+                ++iteration;
+            }
+
+            // Color the pixel based on the number of iterations
+            img.at<Vec3b>(y, x) = GetColor(iteration, maxIterations);
+        }
+    }
+    return img;
+}
+
+int OpenCvApp::generateJulia() 
+{
+ 	int width = 800, height = 800;
+	
+    // Random number generator
+    random_device rd;  // Seed for the random number engine
+    mt19937 gen(rd()); // Mersenne Twister engine
+
+    // Define distributions for realPart and imagPart
+    uniform_real_distribution<double> distReal(-1.0, 1.0);        // Range [-1.0, 1.0]
+    uniform_real_distribution<double> distImag(-1.0, 1.0);        // Range [-1.0, 1.0]
+    uniform_int_distribution<int>     distMaxIterations(1,255);   // Range [1, 255]
+    
+    // Generate random values
+    int    maxIterations = distMaxIterations(gen);
+    double realPart      = distReal(gen); // -4.0
+    double imagPart      = distImag(gen); // 6.0
+    
+    //cout << endl << "iterations : " << maxIterations << endl;
+    //cout << endl << "real part  : " << realPart      << endl;
+    //cout << endl << "imgn part  : " << imagPart      << endl;
+
+    // Create the complex number c
+    // valid values :
+    // c=0.355+0.355i 
+    // c=−0.4+0.6i 
+    complex<double> c(realPart, imagPart);
+    
+	//
+	Mat juliaImage = generateJulia(width, height, maxIterations, c);
+
+	//    
+	imwrite("julia.png", juliaImage);
+
+    return 0;
+}
 
 ////////////////////////////////////////////////////////////////
 // DLL ENTRY POINTS
@@ -253,10 +375,20 @@ DLL_EXPORT const char* OpenCvReadImagePath(char* path) {
 	return uniquePtr->OpenCvReadImagePath(path);
 }
 
+//
+DLL_EXPORT int generateMandelbrot() {
+	//
+	std::unique_ptr<OpenCvApp> uniquePtr = std::make_unique<OpenCvApp>();
+	//
+	return uniquePtr->generateMandelbrot();
+}
 
-////////////////////////////////////////////////////////////////
-// MAIN PROGRAM TEST
-////////////////////////////////////////////////////////////////
-
+//
+DLL_EXPORT int generateJulia() {
+	//
+	std::unique_ptr<OpenCvApp> uniquePtr = std::make_unique<OpenCvApp>();
+	//
+	return uniquePtr->generateJulia();
+}
 
 ////////////////////////////////////////////////////////////////

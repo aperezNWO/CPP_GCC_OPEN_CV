@@ -60,16 +60,6 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit2]
-FileName=OpenCvApp.cpp
-CompileCpp=1
-Folder=
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit3]
 FileName=OpenCvDll.cpp
 CompileCpp=1
 Folder=
@@ -79,8 +69,9 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit4]
+[Unit3]
 FileName=OpenCVDll.def
+CompileCpp=1
 Folder=
 Compile=0
 Link=0
@@ -88,17 +79,17 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit5]
+[Unit4]
 FileName=OpenCvdLL.h
-CompileCpp=1
 Folder=
 Compile=1
 Link=1
 Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
+CompileCpp=1
 
-[Unit6]
+[Unit5]
 FileName=OpenCvExe.cpp
 CompileCpp=1
 Folder=
@@ -108,12 +99,22 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit7]
+[Unit6]
 FileName=OpenCvTest.cpp
 CompileCpp=1
 Folder=
 Compile=1
 Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit7]
+FileName=CMakeLists.txt
+CompileCpp=1
+Folder=
+Compile=0
+Link=0
 Priority=1000
 OverrideBuildCmd=0
 BuildCmd=

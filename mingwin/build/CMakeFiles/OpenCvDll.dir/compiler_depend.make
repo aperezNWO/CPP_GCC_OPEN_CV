@@ -72,6 +72,8 @@ CMakeFiles/OpenCvDll.dir/OpenCvDll.cpp.obj: C:/Users/pablo.perez/dev/cpp/CPP_GCC
   C:/msys64/mingw64/include/c++/15.1.0/bits/predefined_ops.h \
   C:/msys64/mingw64/include/c++/15.1.0/bits/ptr_traits.h \
   C:/msys64/mingw64/include/c++/15.1.0/bits/quoted_string.h \
+  C:/msys64/mingw64/include/c++/15.1.0/bits/random.h \
+  C:/msys64/mingw64/include/c++/15.1.0/bits/random.tcc \
   C:/msys64/mingw64/include/c++/15.1.0/bits/range_access.h \
   C:/msys64/mingw64/include/c++/15.1.0/bits/refwrap.h \
   C:/msys64/mingw64/include/c++/15.1.0/bits/requires_hosted.h \
@@ -97,6 +99,7 @@ CMakeFiles/OpenCvDll.dir/OpenCvDll.cpp.obj: C:/Users/pablo.perez/dev/cpp/CPP_GCC
   C:/msys64/mingw64/include/c++/15.1.0/bits/stl_map.h \
   C:/msys64/mingw64/include/c++/15.1.0/bits/stl_multimap.h \
   C:/msys64/mingw64/include/c++/15.1.0/bits/stl_multiset.h \
+  C:/msys64/mingw64/include/c++/15.1.0/bits/stl_numeric.h \
   C:/msys64/mingw64/include/c++/15.1.0/bits/stl_pair.h \
   C:/msys64/mingw64/include/c++/15.1.0/bits/stl_queue.h \
   C:/msys64/mingw64/include/c++/15.1.0/bits/stl_raw_storage_iter.h \
@@ -164,12 +167,15 @@ CMakeFiles/OpenCvDll.dir/OpenCvDll.cpp.obj: C:/Users/pablo.perez/dev/cpp/CPP_GCC
   C:/msys64/mingw64/include/c++/15.1.0/memory \
   C:/msys64/mingw64/include/c++/15.1.0/mutex \
   C:/msys64/mingw64/include/c++/15.1.0/new \
+  C:/msys64/mingw64/include/c++/15.1.0/numeric \
   C:/msys64/mingw64/include/c++/15.1.0/ostream \
   C:/msys64/mingw64/include/c++/15.1.0/pstl/execution_defs.h \
   C:/msys64/mingw64/include/c++/15.1.0/pstl/glue_algorithm_defs.h \
   C:/msys64/mingw64/include/c++/15.1.0/pstl/glue_memory_defs.h \
+  C:/msys64/mingw64/include/c++/15.1.0/pstl/glue_numeric_defs.h \
   C:/msys64/mingw64/include/c++/15.1.0/pstl/pstl_config.h \
   C:/msys64/mingw64/include/c++/15.1.0/queue \
+  C:/msys64/mingw64/include/c++/15.1.0/random \
   C:/msys64/mingw64/include/c++/15.1.0/ratio \
   C:/msys64/mingw64/include/c++/15.1.0/set \
   C:/msys64/mingw64/include/c++/15.1.0/sstream \
@@ -210,6 +216,7 @@ CMakeFiles/OpenCvDll.dir/OpenCvDll.cpp.obj: C:/Users/pablo.perez/dev/cpp/CPP_GCC
   C:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32/bits/gthr-default.h \
   C:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32/bits/gthr.h \
   C:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32/bits/messages_members.h \
+  C:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32/bits/opt_random.h \
   C:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32/bits/os_defines.h \
   C:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32/bits/time_members.h \
   C:/msys64/mingw64/include/corecrt.h \
@@ -366,6 +373,8 @@ CMakeFiles/OpenCvDll.dir/OpenCvDll.cpp.obj: C:/Users/pablo.perez/dev/cpp/CPP_GCC
   C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/limits.h \
   C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/mm_malloc.h \
   C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/mmintrin.h \
+  C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/mwaitintrin.h \
+  C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/pmmintrin.h \
   C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/stdarg.h \
   C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/stddef.h \
   C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/stdint.h \
@@ -376,11 +385,13 @@ CMakeFiles/OpenCvDll.dir/OpenCvDll.cpp.obj: C:/Users/pablo.perez/dev/cpp/CPP_GCC
 
 C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/xmmintrin.h:
 
-C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/syslimits.h:
-
 C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/stdint.h:
 
 C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/stdarg.h:
+
+C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/syslimits.h:
+
+C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/mwaitintrin.h:
 
 C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/mmintrin.h:
 
@@ -520,8 +531,6 @@ C:/msys64/mingw64/include/opencv4/opencv2/objdetect/aruco_detector.hpp:
 
 C:/msys64/mingw64/include/opencv4/opencv2/dnn/utils/inference_engine.hpp:
 
-C:/msys64/mingw64/include/opencv4/opencv2/dnn/layer.hpp:
-
 C:/msys64/mingw64/include/opencv4/opencv2/flann/logger.h:
 
 C:/msys64/mingw64/include/opencv4/opencv2/dnn/dnn.inl.hpp:
@@ -534,19 +543,19 @@ C:/msys64/mingw64/include/opencv4/opencv2/dnn/dict.hpp:
 
 C:/msys64/mingw64/include/opencv4/opencv2/dnn.hpp:
 
-C:/msys64/mingw64/include/c++/15.1.0/cmath:
+C:/msys64/mingw64/include/opencv4/opencv2/stitching.hpp:
 
-C:/msys64/mingw64/include/_mingw.h:
+C:/msys64/mingw64/include/opencv4/opencv2/core/utils/logtag.hpp:
+
+C:/msys64/mingw64/include/opencv4/opencv2/core/utils/logger.hpp:
+
+C:/msys64/mingw64/include/opencv4/opencv2/core/utils/logger.defines.hpp:
+
+C:/msys64/mingw64/include/opencv4/opencv2/core/utility.hpp:
+
+C:/msys64/mingw64/include/opencv4/opencv2/core/traits.hpp:
 
 C:/msys64/mingw64/include/c++/15.1.0/bits/version.h:
-
-C:/msys64/mingw64/include/opencv4/opencv2/stitching/detail/matchers.hpp:
-
-C:/msys64/mingw64/include/c++/15.1.0/cstdio:
-
-C:/msys64/mingw64/include/c++/15.1.0/bits/stl_map.h:
-
-C:/msys64/mingw64/include/c++/15.1.0/bits/unordered_map.h:
 
 C:/msys64/mingw64/include/c++/15.1.0/math.h:
 
@@ -555,6 +564,10 @@ C:/msys64/mingw64/include/c++/15.1.0/bits/stl_queue.h:
 C:/msys64/mingw64/include/c++/15.1.0/bits/basic_string.tcc:
 
 C:/msys64/mingw64/include/malloc.h:
+
+C:/msys64/mingw64/include/corecrt_stdio_config.h:
+
+C:/msys64/mingw64/include/corecrt_wctype.h:
 
 C:/msys64/mingw64/include/c++/15.1.0/bits/stl_list.h:
 
@@ -586,6 +599,10 @@ C:/msys64/mingw64/include/opencv4/opencv2/flann/dist.h:
 
 C:/msys64/mingw64/include/c++/15.1.0/bits/specfun.h:
 
+C:/msys64/mingw64/include/opencv4/opencv2/core/saturate.hpp:
+
+C:/msys64/mingw64/include/c++/15.1.0/bits/ostream.tcc:
+
 C:/msys64/mingw64/include/opencv4/opencv2/core/optim.hpp:
 
 C:/msys64/mingw64/include/c++/15.1.0/bits/streambuf.tcc:
@@ -606,7 +623,7 @@ C:/msys64/mingw64/include/c++/15.1.0/unordered_map:
 
 C:/msys64/mingw64/include/c++/15.1.0/bits/range_access.h:
 
-C:/msys64/mingw64/include/opencv4/opencv2/core/utility.hpp:
+C:/msys64/mingw64/include/c++/15.1.0/bits/random.tcc:
 
 C:/msys64/mingw64/include/opencv4/opencv2/flann/all_indices.h:
 
@@ -626,27 +643,25 @@ C:/msys64/mingw64/include/sys/types.h:
 
 C:/msys64/mingw64/include/c++/15.1.0/cctype:
 
+C:/msys64/mingw64/include/c++/15.1.0/bits/stl_numeric.h:
+
 C:/msys64/mingw64/include/c++/15.1.0/bits/basic_ios.tcc:
 
 C:/msys64/mingw64/include/c++/15.1.0/bits/stl_construct.h:
 
 C:/msys64/mingw64/include/c++/15.1.0/bits/localefwd.h:
 
+C:/msys64/mingw64/include/c++/15.1.0/numeric:
+
 C:/msys64/mingw64/include/c++/15.1.0/bits/stl_multimap.h:
 
 C:/msys64/mingw64/include/locale.h:
-
-C:/msys64/mingw64/include/opencv4/opencv2/core/traits.hpp:
 
 C:/msys64/mingw64/include/c++/15.1.0/exception:
 
 C:/msys64/mingw64/include/c++/15.1.0/bits/basic_ios.h:
 
-C:/msys64/mingw64/include/opencv4/opencv2/core/ovx.hpp:
-
 C:/msys64/mingw64/include/c++/15.1.0/bits/std_abs.h:
-
-C:/msys64/mingw64/include/opencv4/opencv2/core/utils/logger.defines.hpp:
 
 C:/msys64/mingw64/include/assert.h:
 
@@ -682,6 +697,8 @@ C:/msys64/mingw64/include/c++/15.1.0/ext/aligned_buffer.h:
 
 C:/msys64/mingw64/include/c++/15.1.0/bits/chrono.h:
 
+C:/msys64/mingw64/include/c++/15.1.0/pstl/glue_numeric_defs.h:
+
 C:/msys64/mingw64/include/c++/15.1.0/bits/allocated_ptr.h:
 
 C:/msys64/mingw64/include/c++/15.1.0/locale:
@@ -703,6 +720,18 @@ C:/msys64/mingw64/include/opencv4/opencv2/core/vsx_utils.hpp:
 C:/msys64/mingw64/include/c++/15.1.0/bits/string_view.tcc:
 
 C:/msys64/mingw64/include/c++/15.1.0/bits/vector.tcc:
+
+C:/msys64/mingw64/include/_mingw.h:
+
+C:/msys64/mingw64/include/c++/15.1.0/cmath:
+
+C:/msys64/mingw64/include/opencv4/opencv2/stitching/detail/matchers.hpp:
+
+C:/msys64/mingw64/include/c++/15.1.0/bits/stl_map.h:
+
+C:/msys64/mingw64/include/c++/15.1.0/bits/unordered_map.h:
+
+C:/msys64/mingw64/include/c++/15.1.0/cstdio:
 
 C:/msys64/mingw64/include/c++/15.1.0/bits/istream.tcc:
 
@@ -730,20 +759,6 @@ C:/msys64/mingw64/include/opencv4/opencv2/core/matx.inl.hpp:
 
 C:/msys64/mingw64/include/_mingw_stat64.h:
 
-C:/msys64/mingw64/include/c++/15.1.0/bits/stringfwd.h:
-
-C:/msys64/mingw64/include/c++/15.1.0/bits/stl_iterator.h:
-
-C:/msys64/mingw64/include/c++/15.1.0/bits/ios_base.h:
-
-C:/msys64/mingw64/include/c++/15.1.0/complex:
-
-C:/msys64/mingw64/include/wchar.h:
-
-C:/msys64/mingw64/include/opencv4/opencv2/core/version.hpp:
-
-C:/msys64/mingw64/include/c++/15.1.0/ios:
-
 C:/msys64/mingw64/include/c++/15.1.0/bits/stl_uninitialized.h:
 
 C:/msys64/mingw64/include/c++/15.1.0/backward/auto_ptr.h:
@@ -761,8 +776,6 @@ C:/msys64/mingw64/include/c++/15.1.0/bits/predefined_ops.h:
 C:/msys64/mingw64/include/c++/15.1.0/pstl/glue_algorithm_defs.h:
 
 C:/msys64/mingw64/include/c++/15.1.0/algorithm:
-
-C:/msys64/mingw64/include/opencv4/opencv2/core/utils/logger.hpp:
 
 C:/msys64/mingw64/include/swprintf.inl:
 
@@ -804,6 +817,8 @@ C:/msys64/mingw64/include/c++/15.1.0/bits/locale_facets.h:
 
 C:/msys64/mingw64/include/c++/15.1.0/bits/node_handle.h:
 
+C:/msys64/mingw64/include/c++/15.1.0/bits/random.h:
+
 C:/msys64/mingw64/include/c++/15.1.0/bits/stl_relops.h:
 
 C:/msys64/mingw64/include/c++/15.1.0/bits/cxxabi_init_exception.h:
@@ -836,8 +851,6 @@ C:/msys64/mingw64/include/c++/15.1.0/bits/locale_facets_nonio.tcc:
 
 C:/msys64/mingw64/include/c++/15.1.0/bits/functional_hash.h:
 
-C:/msys64/mingw64/include/c++/15.1.0/compare:
-
 C:/msys64/mingw64/include/opencv4/opencv2/core/hal/interface.h:
 
 C:/msys64/mingw64/include/c++/15.1.0/bits/nested_exception.h:
@@ -862,6 +875,22 @@ C:/msys64/mingw64/include/c++/15.1.0/bits/allocator.h:
 
 C:/msys64/mingw64/include/c++/15.1.0/bits/locale_facets.tcc:
 
+C:/msys64/mingw64/include/c++/15.1.0/compare:
+
+C:/msys64/mingw64/include/c++/15.1.0/bits/stringfwd.h:
+
+C:/msys64/mingw64/include/c++/15.1.0/bits/stl_iterator.h:
+
+C:/msys64/mingw64/include/c++/15.1.0/bits/ios_base.h:
+
+C:/msys64/mingw64/include/c++/15.1.0/complex:
+
+C:/msys64/mingw64/include/wchar.h:
+
+C:/msys64/mingw64/include/opencv4/opencv2/core/version.hpp:
+
+C:/msys64/mingw64/include/c++/15.1.0/ios:
+
 C:/msys64/mingw64/include/c++/15.1.0/bits/align.h:
 
 C:/msys64/mingw64/include/c++/15.1.0/cstdint:
@@ -876,9 +905,9 @@ C:/msys64/mingw64/include/opencv4/opencv2/core/cvstd.inl.hpp:
 
 C:/msys64/mingw64/include/c++/15.1.0/cwchar:
 
-C:/msys64/mingw64/include/c++/15.1.0/bits/stl_vector.h:
-
 C:/msys64/mingw64/include/opencv4/opencv2/core/types.hpp:
+
+C:/msys64/mingw64/include/c++/15.1.0/bits/stl_vector.h:
 
 C:/msys64/mingw64/include/ctype.h:
 
@@ -927,10 +956,6 @@ C:/msys64/mingw64/include/c++/15.1.0/bits/stl_iterator_base_types.h:
 C:/msys64/mingw64/include/c++/15.1.0/initializer_list:
 
 C:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32/bits/os_defines.h:
-
-C:/msys64/mingw64/include/opencv4/opencv2/stitching.hpp:
-
-C:/msys64/mingw64/include/opencv4/opencv2/core/utils/logtag.hpp:
 
 C:/msys64/mingw64/include/c++/15.1.0/bits/fstream.tcc:
 
@@ -983,6 +1008,12 @@ C:/msys64/mingw64/include/c++/15.1.0/bits/requires_hosted.h:
 C:/msys64/mingw64/include/c++/15.1.0/bits/shared_ptr_atomic.h:
 
 C:/msys64/mingw64/include/c++/15.1.0/queue:
+
+C:/msys64/mingw64/include/opencv4/opencv2/core/ovx.hpp:
+
+C:/msys64/mingw64/include/c++/15.1.0/random:
+
+C:/msys64/mingw64/include/crtdefs.h:
 
 C:/msys64/mingw64/include/c++/15.1.0/stdlib.h:
 
@@ -1040,6 +1071,8 @@ C:/msys64/mingw64/include/c++/15.1.0/tr1/riemann_zeta.tcc:
 
 C:/msys64/mingw64/include/opencv4/opencv2/core/cvstd.hpp:
 
+C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/pmmintrin.h:
+
 C:/msys64/mingw64/include/c++/15.1.0/type_traits:
 
 C:/msys64/mingw64/include/c++/15.1.0/bits/utility.h:
@@ -1070,17 +1103,15 @@ C:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32/bits/error_constants.h:
 
 C:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32/bits/messages_members.h:
 
+C:/msys64/mingw64/include/opencv4/opencv2/dnn/layer.hpp:
+
+C:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32/bits/opt_random.h:
+
 C:/msys64/mingw64/include/corecrt.h:
 
 C:/msys64/mingw64/include/opencv4/opencv2/objdetect/graphical_code_detector.hpp:
 
 C:/msys64/mingw64/include/corecrt_startup.h:
-
-C:/msys64/mingw64/include/corecrt_stdio_config.h:
-
-C:/msys64/mingw64/include/corecrt_wctype.h:
-
-C:/msys64/mingw64/include/crtdefs.h:
 
 C:/msys64/mingw64/include/opencv4/opencv2/calib3d.hpp:
 
@@ -1111,7 +1142,3 @@ C:/msys64/mingw64/include/opencv4/opencv2/core/cv_cpu_dispatch.h:
 C:/msys64/mingw64/include/opencv4/opencv2/objdetect/face.hpp:
 
 C:/msys64/mingw64/include/opencv4/opencv2/core/mat.hpp:
-
-C:/msys64/mingw64/include/c++/15.1.0/bits/ostream.tcc:
-
-C:/msys64/mingw64/include/opencv4/opencv2/core/saturate.hpp:
