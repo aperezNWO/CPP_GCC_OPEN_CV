@@ -301,7 +301,7 @@ Mat OpenCvApp::generateJulia(int width, int height, int maxIterations, complex<d
     }
     return img;
 }
-
+//
 int OpenCvApp::generateJulia() 
 {
  	int width = 800, height = 800;
@@ -338,7 +338,24 @@ int OpenCvApp::generateJulia()
 
     return 0;
 }
+//
+int OpenCvApp::generateJuliaParams(int maxIterations, double realPart, double imagPart) 
+{
+	//
+	int width = 800, height = 800;
+	
+ 	//
+    complex<double> c(realPart, imagPart);
+    
+	//
+	Mat juliaImage = generateJulia(width, height, maxIterations, c);
 
+	//    
+	imwrite("julia.png", juliaImage);
+
+	//
+    return 0;
+}
 //
 const char* OpenCvApp::GetCPPSTDVersion(long int cppVersion)	
 {
@@ -389,6 +406,16 @@ DLL_EXPORT const char* OpenCvReadImagePath(char* path) {
 	return uniquePtr->OpenCvReadImagePath(path);
 }
 
+// C++ VERSION
+DLL_EXPORT const char* OpenCv_GetCPPSTDVersion()
+{
+	//
+	OpenCvApp *app = new OpenCvApp();
+	
+	//
+	return app->GetCPPSTDVersion(__cplusplus);	
+}
+
 //
 DLL_EXPORT int generateMandelbrot() {
 	//
@@ -405,12 +432,17 @@ DLL_EXPORT int generateJulia() {
 	return uniquePtr->generateJulia();
 }
 
-// C++ VERSION
-DLL_EXPORT const char* OpenCv_GetCPPSTDVersion()
-{
-	OpenCvApp *app = new OpenCvApp();
-	
-	return app->GetCPPSTDVersion(__cplusplus);	
+//
+DLL_EXPORT int generateJuliaParams(int maxIterations, double realPart, double imagPart) {
+	//
+	std::unique_ptr<OpenCvApp> uniquePtr = std::make_unique<OpenCvApp>();
+	//
+	// Create the complex number c
+	// valid values :
+	// c=0.355+0.355i 
+	// c=−0.4+0.6i 
+	//
+	return uniquePtr->generateJuliaParams(maxIterations,realPart,imagPart);
 }
 
 ////////////////////////////////////////////////////////////////

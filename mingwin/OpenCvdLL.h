@@ -39,6 +39,7 @@ class OpenCvApp
         int                      generateMandelbrot(); 
 		Mat                      generateJulia(int width, int height, int maxIterations, complex<double> c);                     
         int                      generateJulia();
+        int 					 generateJuliaParams(int maxIterations, double realPart, double imagPart); 
         int                      ReadConfigFile();
         const char*              GetCPPSTDVersion(long int cppVersion);
      public :
