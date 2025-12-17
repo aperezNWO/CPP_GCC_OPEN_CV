@@ -157,14 +157,14 @@ vector<string> OpenCvApp::detectShapes(const cv::Mat& inputImage) {
 
 		std::string shape;
 		if (approx.size() == 3) {
-			shape = "[Triángulo]";
+			shape = "[Triangle]";
 		} else if (approx.size() == 4) {
 			// Calculate bounding rectangle and aspect ratio
 			cv::Rect rect = cv::boundingRect(approx);
 			double aspectRatio = static_cast<double>(rect.width) / rect.height;
-			shape = (aspectRatio >= 0.95 && aspectRatio <= 1.05) ? "[Cuadrado]" : "[Rectángulo]";
+			shape = (aspectRatio >= 0.95 && aspectRatio <= 1.05) ? "[Square]" : "[Rectangle]";
 		} else if (approx.size() > 4) {
-			shape = "[Círculo]";
+			shape = "[Circle]";
 		}
 
 		if (!shape.empty()) {
